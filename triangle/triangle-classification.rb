@@ -1,9 +1,6 @@
 # A triangle can be classified across a few dimensions, one of which is based on the lengths of its sides.
-
 # A triangle is scalene if all of its three sides are different.
-
 # If two of its sides are equal, a triangle is called isosceles.
-
 # A triangle with all three equal sides is called equilateral.
 
 # Requirements
@@ -13,3 +10,21 @@
 # classify(len1, len2, len3)
 # This method accepts three numeric values each representing the length of one side of a triangle. It returns a symbol, :scalene, :isosceles, or :equilateral, where the return value corresponds to the actual type of the triangle.
 # In addition, the classify method should perform error checking if the given lengths of the sides cannot correspond to a real triangle. In this case, it should raise the error ArgumentError.
+
+class TriangleClassifier
+
+  def classify(len1, len2, len3)
+    if len1 == len2 && len2 == len3
+      :equilateral
+    elsif len1 != len2 && len2 != len3 
+      :scalene
+    elsif # two sides equal
+      :scalene
+    else
+      raise ArgumentError,
+        "The given lengths of the sides cannot correspond to a real triangle:"      
+    end
+
+  end
+
+end
