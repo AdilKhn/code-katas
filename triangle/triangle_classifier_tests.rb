@@ -13,16 +13,20 @@ class TriangleClassifierTests < Test::Unit::TestCase
   end
 
   def test_classifies_scalene
+    pend('to be written')
   end
 
   def test_classifies_isosceles
+    pend('to be written')
   end
 
   def test_classifies_equilateral
+    pend('to be written')
   end
 
   def test_throws_argument_error_on_invalid_input
-    value = TriangleClassifier.classify
-    assert_kind_of(ArgumentError, value, 'ArgumentError if no parameters')
+    assert_raise ArgumentError do
+      TriangleClassifier.classify
+    end
   end
 end
