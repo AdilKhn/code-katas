@@ -16,4 +16,11 @@ describe TriangleClassifier do
       expect{classifier.classify(1,1,3)}.to raise_error(ArgumentError)
     end
   end
+
+  context '#classify method' do
+    it 'returns isoceles when all sides are the same' do
+      classifier = TriangleClassifier.new
+      expect(classifier.classify(1,1,1)).to eq :isoceles
+    end
+  end
 end
