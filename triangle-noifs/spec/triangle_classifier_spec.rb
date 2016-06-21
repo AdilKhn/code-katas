@@ -17,6 +17,19 @@ describe TriangleClassifier do
     end
   end
 
+ context 'invalid? method' do
+   it 'returns true if sum of any two sides is less than third' do
+     classifier = TriangleClassifier.new
+     retval = classifier.send(:invalid?, 7, 2, 1)
+     expect(retval).to be_truthy
+    end
+
+    it 'returns false if sum of any two sides is greater or eq to the third' do
+      classifier = TriangleClassifier.new
+      retval = classifier.send(:invalid?, 2, 2, 1)
+      expect(retval).to be_falsey
+     end
+ end
   context '#classify method' do
     it 'returns isoceles when two sides are equal' do
       classifier = TriangleClassifier.new

@@ -1,3 +1,4 @@
+require 'byebug'
 class TriangleClassifier
   def classify(len1=1, len2=1, len3=1)
     raise ArgumentError, 'Invalid Triangle' if invalid?(len1,len2,len3)
@@ -11,8 +12,14 @@ class TriangleClassifier
 
   private
   def invalid?(len1, len2, len3)
-    return true if  len1 + len2 <= len3
-    return true if  len2 + len3 <= len1
-    return true if  len1 + len3 <= len2
+    sides = [len1, len2, len3]
+    outcomes = []
+    sides.combination(2).to_a.each do |x|
+      sum_of_two_sides = x.reduce(:+)
+        sides.each do |side|
+          outcomes.push(side >= sum_of_two_sides)
+        end
+    end
+    outcomes.include?(true)
   end
 end
