@@ -1,17 +1,24 @@
 require 'byebug'
 class TriangleClassifier
-  def classify(len1=1, len2=1, len3=1)
-    raise ArgumentError, 'Invalid Triangle' if invalid?(len1,len2,len3)
+  def self.lookup_table(num)
+    table = {
+      1 => :equilateral,
+      2 => :isoceles,
+      3 => :scalene
+    }
+
+    table[num]
+  end
+
+  def classify(len1 = 1, len2 = 1, len3 = 1)
+    validate(len1, len2, len3)
     sides = [len1, len2, len3]
-
-
-    return :scalene if sides.uniq.length == 3
-    return :isoceles if sides.uniq.length == 2
-    return :equilateral if sides.uniq.length == 1
+    TriangleClassifier.lookup_table(sides.uniq.length)
   end
 
   private
-  def invalid?(len1, len2, len3)
+
+  def validate(len1, len2, len3)
     sides = [len1, len2, len3]
     outcomes = []
     sides.combination(2).to_a.each do |x|
@@ -20,6 +27,7 @@ class TriangleClassifier
           outcomes.push(side >= sum_of_two_sides)
         end
     end
-    outcomes.include?(true)
+    raise ArgumentError, 'Invalid Triangle' if outcomes.include?(true)
+    return true
   end
 end
