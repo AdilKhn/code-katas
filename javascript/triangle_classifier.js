@@ -1,10 +1,20 @@
-var TriangleClassifier = function (len1, len2, len3){
+var TriangleClassifier = {
 
-    return {
+    side1: 1,
+    side2: 1,
+    side3: 1,
 
-      validate: function() {}
+    validate: function() {
+        return true;
     }
 
 }
 
-module.exports = TriangleClassifier
+module.exports = function (len1, len2, len3){
+
+    TriangleClassifier.side1 = len1;
+    TriangleClassifier.side2 = len2;
+    TriangleClassifier.side3 = len3;
+
+    return TriangleClassifier;
+}
