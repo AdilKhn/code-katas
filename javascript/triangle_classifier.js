@@ -5,10 +5,26 @@ var TriangleClassifier = {
     side3: 1,
 
     validate: function() {
-        return true;
+
+      return this.side1 + this.side2 > this.side3 &&
+             this.side2 + this.side3 > this.side1 &&
+             this.side1 + this.side3 > this.side2;
+    },
+
+    classify: function(){
+
+      if(this.side1 == this.side2 == this.side3){
+          return 'equilateral';
+
+      }else{
+        return 'isoceles';
+      }
+
+
     }
 
-}
+
+};
 
 module.exports = function (len1, len2, len3){
 
