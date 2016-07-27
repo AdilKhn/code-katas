@@ -59,11 +59,4 @@ describe('#classify method', function(){
 
     chai.expect(type).to.eq('isoceles');
   });
-
-  it('returns scalene when all three sides are different', function(){
-    var tc = TriangleClassifier(3,5,4);
-    var type = tc.classify();
-
-    chai.expect(type).to.eq('scalene');
-  });
 });

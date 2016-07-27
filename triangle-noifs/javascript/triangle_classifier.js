@@ -12,19 +12,16 @@ var TriangleClassifier = {
     },
 
     classify: function(){
-      if (this.unique([this.side1,this.side2,this.side3]).length == 1){
-        return 'equilateral';
-      }
 
-      if (this.unique([this.side1,this.side2,this.side3]).length == 2){
+      if(this.side1 == this.side2 == this.side3){
+          return 'equilateral';
+
+      }else{
         return 'isoceles';
       }
 
-      if (this.unique([this.side1,this.side2,this.side3]).length == 3){
-        return 'scalene';
-      }
-    },
 
+    },
     unique: function(array) {
       return array.filter(function(x, i) {
         return array.indexOf(x) === i
